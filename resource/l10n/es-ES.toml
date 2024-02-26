@@ -627,3 +627,12 @@ other = "Característica"
 
 [Template]
 other = "Plantilla"
+
+[SendRecoveryMessage]
+other = "Send Recover Message"
+
+[MessageTemplate]
+other = "Message Template"
+
+[RecoveryMessageTemplate]
+other = "Recover Message Template"

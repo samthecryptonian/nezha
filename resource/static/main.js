@@ -156,9 +156,14 @@ function showFormModal(modelSelector, formID, URL, getData) {
     })
     .modal("show");
 }
-
+let DefaultMessageTemplate="";
+let DefaultRecoveryMessageTemplate=""
 function addOrEditAlertRule(rule) {
   const modal = $(".rule.modal");
+  if(!DefaultMessageTemplate){
+    DefaultMessageTemplate=modal.find("input[name=MessageTemplate]").val();
+    DefaultRecoveryMessageTemplate=modal.find("input[name=RecoveryMessageTemplate]").val();
+  }
   modal.children(".header").text((rule ? LANG.Edit : LANG.Add) + ' ' + LANG.AlarmRule);
   modal
     .find(".nezha-primary-btn.button")
@@ -178,6 +183,13 @@ function addOrEditAlertRule(rule) {
   modal.find("a.ui.label.visible").each((i, el) => {
     el.remove();
   });
+  modal.find("input[name=MessageTemplate]").val(rule?rule.MessageTemplate:DefaultMessageTemplate);
+  modal.find("input[name=RecoveryMessageTemplate]").val(rule?rule.RecoveryMessageTemplate:DefaultRecoveryMessageTemplate);
+  if(rule && rule.SendRecoveryMessage){
+    modal.find(".ui.rule-recover-message.checkbox").checkbox("set checked");
+  }else{
+    modal.find(".ui.rule-recover-message.checkbox").checkbox("set unchecked");
+  }
   var failTriggerTasks;
   var recoverTriggerTasks;
   if (rule) {

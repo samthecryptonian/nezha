@@ -25,16 +25,19 @@ type CycleTransferStats struct {
 
 type AlertRule struct {
 	Common
-	Name                   string
-	RulesRaw               string
-	Enable                 *bool
-	TriggerMode            int      `gorm:"default:0"` // 触发模式: 0-始终触发(默认) 1-单次触发
-	NotificationTag        string   // 该报警规则所在的通知组
-	FailTriggerTasksRaw    string   `gorm:"default:'[]'"`
-	RecoverTriggerTasksRaw string   `gorm:"default:'[]'"`
-	Rules                  []Rule   `gorm:"-" json:"-"`
-	FailTriggerTasks       []uint64 `gorm:"-" json:"-"` // 失败时执行的触发任务id
-	RecoverTriggerTasks    []uint64 `gorm:"-" json:"-"` // 恢复时执行的触发任务id
+	Name                    string
+	RulesRaw                string
+	Enable                  *bool
+	TriggerMode             int      `gorm:"default:0"` // 触发模式: 0-始终触发(默认) 1-单次触发
+	NotificationTag         string   // 该报警规则所在的通知组
+	FailTriggerTasksRaw     string   `gorm:"default:'[]'"`
+	RecoverTriggerTasksRaw  string   `gorm:"default:'[]'"`
+	Rules                   []Rule   `gorm:"-" json:"-"`
+	FailTriggerTasks        []uint64 `gorm:"-" json:"-"` // 失败时执行的触发任务id
+	RecoverTriggerTasks     []uint64 `gorm:"-" json:"-"` // 恢复时执行的触发任务id
+	SendRecoveryMessage     bool
+	MessageTemplate         string
+	RecoveryMessageTemplate string
 }
 
 func (r *AlertRule) BeforeSave(tx *gorm.DB) error {

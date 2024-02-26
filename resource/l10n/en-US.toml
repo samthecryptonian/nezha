@@ -627,3 +627,12 @@ other = "Feature"
 
 [Template]
 other = "Template"
+
+[SendRecoveryMessage]
+other = "Send Recover Message"
+
+[MessageTemplate]
+other = "Message Template"
+
+[RecoveryMessageTemplate]
+other = "Recover Message Template"

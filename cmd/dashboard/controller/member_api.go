@@ -730,14 +730,17 @@ func (ma *memberAPI) addOrEditNotification(c *gin.Context) {
 }
 
 type alertRuleForm struct {
-	ID                     uint64
-	Name                   string
-	RulesRaw               string
-	FailTriggerTasksRaw    string // 失败时触发的任务id
-	RecoverTriggerTasksRaw string // 恢复时触发的任务id
-	NotificationTag        string
-	TriggerMode            int
-	Enable                 string
+	ID                      uint64
+	Name                    string
+	RulesRaw                string
+	FailTriggerTasksRaw     string // 失败时触发的任务id
+	RecoverTriggerTasksRaw  string // 恢复时触发的任务id
+	NotificationTag         string
+	TriggerMode             int
+	Enable                  string
+	SendRecoveryMessage     string
+	MessageTemplate         string
+	RecoveryMessageTemplate string
 }
 
 func (ma *memberAPI) addOrEditAlertRule(c *gin.Context) {
@@ -784,6 +787,9 @@ func (ma *memberAPI) addOrEditAlertRule(c *gin.Context) {
 		r.TriggerMode = arf.TriggerMode
 		r.Enable = &enable
 		r.ID = arf.ID
+		r.SendRecoveryMessage = arf.SendRecoveryMessage == "on"
+		r.MessageTemplate = arf.MessageTemplate
+		r.RecoveryMessageTemplate = arf.RecoveryMessageTemplate
 	}
 	if err == nil {
 		err = utils.Json.Unmarshal([]byte(arf.FailTriggerTasksRaw), &r.FailTriggerTasks)
