@@ -628,5 +628,11 @@ other = "功能"
 [Template]
 other = "主題"
 
-[Stat]
-other = "信息"
+[SendRecoveryMessage]
+other = "发送恢复消息"
+
+[MessageTemplate]
+other = "消息模板"
+
+[RecoveryMessageTemplate]
+other = "恢复消息模板"

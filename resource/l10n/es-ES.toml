@@ -628,5 +628,11 @@ other = "Característica"
 [Template]
 other = "Plantilla"
 
-[Stat]
-other = "Stat"
+[SendRecoveryMessage]
+other = "Send Recover Message"
+
+[MessageTemplate]
+other = "Message Template"
+
+[RecoveryMessageTemplate]
+other = "Recover Message Template"

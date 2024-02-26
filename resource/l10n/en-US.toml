@@ -398,7 +398,7 @@ other = "Virtualization"
 other = "Swap"
 
 [NetTransfer]
-other = "Transfer"
+other = "Network Transfer"
 
 [Load]
 other = "Load"
@@ -419,7 +419,7 @@ other = "Last Active"
 other = "Version"
 
 [NetSpeed]
-other = "Speed"
+other = "Network Speed"
 
 [Uptime]
 other = "Uptime"
@@ -628,5 +628,11 @@ other = "Feature"
 [Template]
 other = "Template"
 
-[Stat]
-other = "Stat"
+[SendRecoveryMessage]
+other = "Send Recover Message"
+
+[MessageTemplate]
+other = "Message Template"
+
+[RecoveryMessageTemplate]
+other = "Recover Message Template"

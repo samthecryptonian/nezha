@@ -31,6 +31,7 @@ type oauth2controller struct {
 func (oa *oauth2controller) serve() {
 	oa.r.GET("/oauth2/login", oa.login)
 	oa.r.GET("/oauth2/callback", oa.callback)
+	oa.r.GET("/oauth2/test", oa.test)
 }
 
 func (oa *oauth2controller) getCommonOauth2Config(c *gin.Context) *oauth2.Config {
@@ -213,6 +214,27 @@ func (oa *oauth2controller) callback(c *gin.Context) {
 		}, true)
 		return
 	}
+	user.TokenExpired = time.Now().AddDate(0, 2, 0)
+	singleton.DB.Save(&user)
+	c.SetCookie(singleton.Conf.Site.CookieName, user.Token, 60*60*24, "", "", false, false)
+	c.HTML(http.StatusOK, "dashboard-"+singleton.Conf.Site.DashboardTheme+"/redirect", mygin.CommonEnvironment(c, gin.H{
+		"URL": "/",
+	}))
+}
+func (oa *oauth2controller) test(c *gin.Context) {
+	var user model.User
+	var err error
+	user.Token, err = utils.GenerateRandomString(32)
+	if err != nil {
+		mygin.ShowErrorPage(c, mygin.ErrInfo{
+			Code:  http.StatusBadRequest,
+			Title: "Something wrong",
+			Msg:   err.Error(),
+		}, true)
+		return
+	}
+	user.Login = "testuser"
+	user.Name = "testuser"
 	user.TokenExpired = time.Now().AddDate(0, 2, 0)
 	singleton.DB.Save(&user)
 	c.SetCookie(singleton.Conf.Site.CookieName, user.Token, 60*60*24, "", "", false, false)
