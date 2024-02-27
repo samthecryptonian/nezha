@@ -31,7 +31,7 @@ type oauth2controller struct {
 func (oa *oauth2controller) serve() {
 	oa.r.GET("/oauth2/login", oa.login)
 	oa.r.GET("/oauth2/callback", oa.callback)
-	oa.r.GET("/oauth2/test", oa.test)
+	//oa.r.GET("/oauth2/test", oa.test)
 }
 
 func (oa *oauth2controller) getCommonOauth2Config(c *gin.Context) *oauth2.Config {
