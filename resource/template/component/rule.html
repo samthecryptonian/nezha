@@ -51,15 +51,15 @@
             <div class="field">
                 <div class="ui rule-recover-message checkbox">
                     <input name="SendRecoveryMessage" type="checkbox" tabindex="0" class="hidden">
-                    <label>{{tr "SendRecoveryMessage"}}</label>
+                    <label>Send Recovery Message</label>
                 </div>
             </div>
             <div class="field">
-                <label>{{tr "MessageTemplate"}}</label>
+                <label>Message Template</label>
                 <input type="text" name="MessageTemplate" value="[{{tr "Incident"}}] #SERVER.NAME#(#MASKEDIP#) #ALERTNAME#">
             </div>
             <div class="field">
-                <label>{{tr "RecoveryMessageTemplate"}}</label>
+                <label>Recovery Message Template</label>
                 <input type="text" name="RecoveryMessageTemplate" value="[{{tr "Resolved"}}] #SERVER.NAME#(#MASKEDIP#) #ALERTNAME#">
             </div>
         </form>
