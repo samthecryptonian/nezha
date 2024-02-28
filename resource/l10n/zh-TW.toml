@@ -628,11 +628,8 @@ other = "功能"
 [Template]
 other = "主題"
 
-[SendRecoveryMessage]
-other = "发送恢复消息"
+[Stat]
+other = "信息"
 
-[MessageTemplate]
-other = "消息模板"
-
-[RecoveryMessageTemplate]
-other = "恢复消息模板"
+[DisableSwitchTemplateInFrontend]
+other = "禁止前台切換主題"
